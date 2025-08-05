@@ -17,6 +17,7 @@ migrations/**/__pycache__/
 
 # Ignore media and static files (if not managed by Git).
 media/
+staticfiles/
 
 # Ignore logs and backups.
 *.log
