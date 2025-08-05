@@ -1,0 +1,37 @@
+# Ignore SQLite database.
+*.sqlite3
+
+# Ignore environment variables and settings.
+.env
+permit_application/settings.py
+
+# Ignore virtual environments.
+.venv/
+venv/
+env/
+
+# Ignore compiled Python files and caches.
+*.pyc
+__pycache__/
+migrations/**/__pycache__/
+
+# Ignore media and static files (if not managed by Git).
+media/
+
+# Ignore logs and backups.
+*.log
+*.bak
+
+# Ignore IDE and editor settings.
+.vscode/
+.idea/
+
+# Ignore testing and coverage reports.
+.tox/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Ignore deployment files.
+*.tar.gz
+*.zip
