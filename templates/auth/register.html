@@ -10,10 +10,13 @@
    <link rel="stylesheet" href="{% static 'styles/core.css' %}">
 </head>
 <body>
-   <h2>Hello welcome back!</h2>
-   <p class="paragraf">testing staticfiles</p>
+   <h2>Hello welcome new user!</h2>
+   <p>please register here.</p>
 
-   <h5>Auth</h5>
-   <a href="{% url 'auth:register' %}">Register</a>
+   <form method="post">
+      {% csrf_token %}
+      {{ form.as_div }}
+      <button type="submit">register</button>
+   </form>
 </body>
 </html>
