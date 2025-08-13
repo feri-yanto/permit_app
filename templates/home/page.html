@@ -2,18 +2,30 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Home page</title>
-   <link rel="shortcut icon" href="{% static 'images/icon/favicon.ico' %}" type="image/x-icon">
-   <link rel="stylesheet" href="{% static 'styles/core.css' %}">
-</head>
-<body>
-   <h2>Hello welcome back!</h2>
-   <p class="paragraf">testing staticfiles</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block title %}
+      <title>Home page</title>
+    {% endblock %}
+    <link rel="shortcut icon" href="{% static 'images/icon/favicon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'styles/core.css' %}" />
+  </head>
+  <body>
+    {% block content %}
+      <h2>Hello welcome back!</h2>
+      <p class="paragraf">testing staticfiles</p>
 
-   <h5>Auth</h5>
-   <a href="{% url 'auth:register' %}">Register</a>
-</body>
+      <h5>Auth</h5>
+      <a href="{% url 'auth:register' %}">Register</a>
+      <a href="{% url 'auth:login' %}">Login</a>
+
+      {% if user.is_authenticated %}
+        <form action="{% url 'auth:logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+        </form>
+      {% endif %}
+    {% endblock %}
+  </body>
 </html>
