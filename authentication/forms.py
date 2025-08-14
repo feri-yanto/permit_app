@@ -16,13 +16,15 @@ class RegisterForm(forms.ModelForm):
       model = Accounts
       fields = ['username', 'email', 'password']
       error_messages = {
-         'username': {'unique': _('Nama pengguna telah digunakan')},
+         'username': {
+            'invalid': _('Nama pengguna hanya dapat berupa huruf, angka, dan simbol (@/./+/-/_) tanpa menggunakan spasi'),
+            'unique': _('Nama pengguna telah digunakan')
+         },
          'email': {'unique': _('Email telah digunakan')},
       }
    
    def save(self, commit = True):
       password = self.cleaned_data['password']
-      self.instance.is_active = False
       self.instance.set_password(password)
       return super().save(commit)
 

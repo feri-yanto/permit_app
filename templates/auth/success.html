@@ -7,11 +7,9 @@
   </head>
   <body>
     <p>Registrasi berhasil, silahkan check email anda</p>
-    <a href="{% url 'auth:login' %}">Sign In</a>
-    {% if messages %}
-      {% for message in messages %}
-        <p>{{ message }}</p>
-      {% endfor %}
-    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">resend link</button>
+    </form>
   </body>
 </html>
