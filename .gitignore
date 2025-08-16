@@ -3,7 +3,6 @@
 
 # Ignore environment variables and settings.
 .env
-permit_application/settings.py
 
 # Ignore virtual environments.
 .venv/

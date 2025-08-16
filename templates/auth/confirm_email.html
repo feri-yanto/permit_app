@@ -1,5 +1,70 @@
-Welcome to BKPSDM - Django Login!!
-Hello {{ name }}!!
-Please verify your email by clicking on the following link.
-Confirmation Link: http://{{ domain }}{% url 'auth:validate' slug=slug token=token %}
-Confirmation link expired afer 3 minutes
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Konfirmasi Pendaftaran</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    .email-wrapper {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .header {
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px;
+    }
+    .header h1 {
+      color: #2c3e50;
+      margin: 0;
+    }
+    .content {
+      font-size: 16px;
+      color: #333333;
+      line-height: 1.6;
+      padding-top: 20px;
+    }
+    .button {
+      display: inline-block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      background-color: #3498db;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #999999;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="header">
+      <h1>Halo, {{ name }}!</h1>
+    </div>
+    <div class="content">
+      <p>Terima kasih telah mendaftar di sistem kami. Untuk menyelesaikan proses pendaftaran, silakan klik tombol di bawah ini untuk mengonfirmasi akun Anda:</p>
+      <p style="text-align: center;">
+        <a href="http://{{ domain }}{% url 'auth:validate' slug=slug token=token %}" class="button">Konfirmasi Akun</a>
+      </p>
+      <p>Jika Anda tidak merasa melakukan pendaftaran, Anda dapat mengabaikan email ini.</p>
+    </div>
+  </div>
+</body>
+</html>
