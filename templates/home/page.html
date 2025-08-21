@@ -13,18 +13,23 @@
   </head>
   <body>
     {% block content %}
-      <h2>Hello welcome back!</h2>
-      <p class="paragraf">testing staticfiles</p>
-
-      <h5>Auth</h5>
-      <a href="{% url 'auth:register' %}">Register</a>
-      <a href="{% url 'auth:login' %}">Login</a>
+      <nav>
+        <h3>Home</h3>
+        <div>
+          {% if user.is_authenticated %}
+            <form action="{% url 'auth:logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
+          {% else %}
+            <a href="{% url 'auth:register' %}">Daftar</a>
+            <a href="{% url 'auth:login' %}">Masuk</a>
+          {% endif %}
+        </div>
+      </nav>
 
       {% if user.is_authenticated %}
-        <form action="{% url 'auth:logout' %}" method="post">
-          {% csrf_token %}
-          <button type="submit">Logout</button>
-        </form>
+        {{ user }}
       {% endif %}
     {% endblock %}
   </body>

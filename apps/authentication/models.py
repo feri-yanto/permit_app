@@ -16,7 +16,6 @@ class Accounts(AbstractUser):
    
    def save(self, *args, **kwargs):
       if not self.slug and self.pk is None:  # Generate a slug only if it's not already set
-         self.is_active = False
          self.slug = get_random_string(length=8)  # Generate an 8-character random string
          # Ensure uniqueness (optional, but recommended for slugs)
          while self.__class__.objects.filter(slug=self.slug).exists():

@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
+from django.contrib.auth.forms import AuthenticationForm
 from .models import Accounts
 
 
@@ -25,3 +26,9 @@ class RegisterForm(forms.ModelForm):
       password = self.cleaned_data['password']
       self.instance.set_password(password)
       return super().save(commit)
+
+class LoginForm(AuthenticationForm):
+   error_messages = {
+      'invalid_login': _("Oops! Nama pengguna atau sandi yang anda masukan salah. Coba lagi"),
+      'inactive': _("Akun anda belum aktif, silahkan periksa email anda untuk verifikasi"),
+   }
