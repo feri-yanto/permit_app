@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view=TemplateView.as_view(template_name='home/page.html'), name='home'),
     # authentication urls
-    path('auth/', include('authentication.urls', namespace='auth')),
+    path('auth/', include('apps.authentication.urls', namespace='auth')),
 ]
